@@ -20,19 +20,19 @@ defmodule OneSignal do
     %OneSignal.Param{}
   end
 
-  def auth_header do
-    %{"Authorization" => "Basic " <> fetch_api_key(), "Content-type" => "application/json"}
+  def auth_header(api_key) do
+    IO.puts("Printing auth_header")
+
+    auth_header = %{"Authorization" => "Basic " <> api_key, "Content-type" => "application/json"}
+    IO.inspect(auth_header)
+    auth_header
   end
 
-  defp config do
-    Application.get_env(:one_signal, OneSignal)
-  end
-
-  defp fetch_api_key do
-    config()[:api_key] || System.get_env("ONE_SIGNAL_API_KEY")
-  end
-
-  def fetch_app_id do
-    config()[:app_id] || System.get_env("ONE_SIGNAL_APP_ID")
-  end
+  #  defp fetch_api_key do
+  #    config()[:api_key] || System.get_env("ONE_SIGNAL_API_KEY")
+  #  end
+  #
+  #  def fetch_app_id do
+  #    config()[:app_id] || System.get_env("ONE_SIGNAL_APP_ID")
+  #  end
 end
