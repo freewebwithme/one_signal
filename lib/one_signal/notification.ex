@@ -9,8 +9,8 @@ defmodule OneSignal.Notification do
   Send push notification
   iex> OneSignal.Notification.send(%{"en" => "Hello!", "ja" => "はろー"}, %{"included_segments" => ["All"], "isAndroid" => true})
   """
-  def send(contents, api_key, app_id, opts) do
-    param = %{"contents" => contents, "app_id" => app_id}
+  def send(title, contents, api_key, app_id, opts) do
+    param = %{"headings" => title, "contents" => contents, "app_id" => app_id}
     body = Map.merge(param, opts)
     url = post_notification_url()
 

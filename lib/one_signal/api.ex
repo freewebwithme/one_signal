@@ -14,8 +14,6 @@ defmodule OneSignal.API do
   def post(url, body, api_key) do
     HTTPoison.start()
 
-    IO.puts("Calling post with api")
-    IO.inspect(api_key)
     req_body = Poison.encode!(body)
 
     HTTPoison.post!(url, req_body, OneSignal.auth_header(api_key))

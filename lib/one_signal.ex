@@ -21,11 +21,7 @@ defmodule OneSignal do
   end
 
   def auth_header(api_key) do
-    IO.puts("Printing auth_header")
-
-    auth_header = %{"Authorization" => "Basic " <> api_key, "Content-type" => "application/json"}
-    IO.inspect(auth_header)
-    auth_header
+    %{"Authorization" => "Basic " <> api_key, "Content-type" => "application/json"}
   end
 
   #  defp fetch_api_key do
