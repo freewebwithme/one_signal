@@ -24,6 +24,14 @@ defmodule OneSignal do
     %{"Authorization" => "Basic " <> api_key, "Content-type" => "application/json"}
   end
 
+  defp config do
+    Application.get_env(:one_signal, OneSignal)
+  end
+
+  def fetch_user_auth_key do
+    config()[:user_auth_key] || System.get_env("ONE_SIGNAL_USER_AUTH_KEY")
+  end
+
   #  defp fetch_api_key do
   #    config()[:api_key] || System.get_env("ONE_SIGNAL_API_KEY")
   #  end

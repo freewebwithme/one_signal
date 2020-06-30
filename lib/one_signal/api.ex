@@ -16,8 +16,9 @@ defmodule OneSignal.API do
 
     req_body = Poison.encode!(body)
 
-    HTTPoison.post!(url, req_body, OneSignal.auth_header(api_key))
-    |> handle_response
+    response = HTTPoison.post!(url, req_body, OneSignal.auth_header(api_key))
+    IO.inspect(response)
+    handle_response(response)
   end
 
   def delete(url, api_key) do
